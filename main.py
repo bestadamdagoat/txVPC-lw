@@ -11,7 +11,6 @@ while True:
     page = Soup(ureq('https://www.myplates.com/api/licenseplates/passenger/classic-black-silver/' + query).read(), "html.parser").get_text()
     if "incapsula" in page:
         quit(print("incapsula"))
-    else:
-        if '"available' in page:
-            print(query)
+    elif '"available' in page:
+        print(query)
     time.sleep(1)
