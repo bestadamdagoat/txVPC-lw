@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup as Soup
 from urllib.request import urlopen as ureq
 import time
 
@@ -8,9 +7,9 @@ while True:
     query = queryfile.readline()
     if not query:
         quit(print("end of file"))
-    page = Soup(ureq('https://www.myplates.com/api/licenseplates/passenger/classic-black-silver/' + query).read(), "html.parser").get_text()
-    if "incapsula" in page:
+    page = ureq('https://www.myplates.com/api/licenseplates/passenger/classic-black-silver/' + query).read()
+    if b"incapsula" in page:
         quit(print("incapsula"))
-    elif '"available' in page:
+    elif b'"available' in page:
         print(query)
     time.sleep(1)
